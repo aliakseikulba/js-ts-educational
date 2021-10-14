@@ -1,4 +1,5 @@
-type StudentType = {
+export type StudentType = {
+  id: number
   name: string
   age: number
   isActive: boolean
@@ -21,7 +22,8 @@ type TechType = {
   title: string
 }
 
-const student: StudentType = {
+export const student: StudentType = {
+  id:11,
   name: 'Alexey',
   age: 26,
   isActive: true,
@@ -48,9 +50,3 @@ const student: StudentType = {
   ]
 }
 
-console.log(student.name);
-console.log(student.age);
-console.log(student.isActive);
-console.log(student.address.streetTitle);
-console.log(student.address.city.cityTitle);
-console.log(student.technologies[2].title);
