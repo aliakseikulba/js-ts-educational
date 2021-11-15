@@ -2,11 +2,11 @@ import {
   makeHaircut,
   moveCity,
   readNewBook, removeBook,
-  updateBook,
+  updateBook, updateCompany,
   upgradeLaptop,
   UserType,
   UserWithBooksType,
-  UserWithLaptopType
+  UserWithLaptopType, WithCompaniesType
 } from './10';
 
 test('reference type test', () => {
@@ -138,5 +138,28 @@ test('remove book', () => {
   expect(user.books).not.toBe(changedUsersBooks.books);
   expect(changedUsersBooks.books.length).toBe(2);
   expect(changedUsersBooks.books[0]).toBe('React');
+
+});
+
+
+test('update company title', () => {
+  let user: UserWithLaptopType & WithCompaniesType= {
+    name: 'Bob',
+    hair: 100,
+    address: {
+      title: 'Minsk'
+    },
+    laptop: {
+      title: 'MacBook'
+    },
+    companies: [{id: 1, title: 'Ebam'}, {id: 2, title: 'Gugle'}, {id: 3, title: 'Urber'}]
+  };
+
+  const updatedCompanies = updateCompany(user, 1, 'EPAM');
+
+  expect(user).not.toBe(updatedCompanies);
+  expect(user.address).toBe(updatedCompanies.address);
+  expect(user.companies).not.toBe(updatedCompanies.companies);
+  expect(updatedCompanies.companies[0].title).toBe('EPAM');
 
 });
