@@ -49,6 +49,11 @@ export function upgradeLaptop(user:UserWithLaptopType, laptopName: string ) {
   return copy;
 }
 
-export function readNewBook(user: UserWithBooksType, book: Array<string>) {
+export function readNewBook(user: UserWithLaptopType & UserWithBooksType, newBooks: Array<string>) {
+  const copy = {
+    ...user,
+    books: [...user.books, ...newBooks]
+  }
 
+  return copy;
 }

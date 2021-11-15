@@ -79,6 +79,8 @@ test('add new book to user', () => {
   expect(user).not.toBe(smartUser);
   expect(user.books).not.toBe(smartUser.books);
   expect(user.address).toBe(smartUser.address);
-  expect(user.books.length).toBe(4);
+  expect(user.books).not.toBe(smartUser.books);
+  expect(smartUser.books[3]).toBe('TS');
+  expect(smartUser.books[4]).toBe('REST API');
 
 });
