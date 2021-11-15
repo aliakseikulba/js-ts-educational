@@ -21,3 +21,14 @@ export function makeHaircut(u: UserType, volume: number) {
   };
   return copy;
 }
+
+export function moveCity(obj: UserWithLaptopType, city: string) {
+  const copy = {
+    ...obj,
+    address: {
+      ...obj.address,
+      title: city
+    }
+  }
+  return copy;
+}

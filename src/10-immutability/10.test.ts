@@ -1,4 +1,4 @@
-import {makeHaircut, UserType, UserWithLaptopType} from './10';
+import {makeHaircut, moveCity, UserType, UserWithLaptopType} from './10';
 
 test('reference type test', () => {
  let user: UserType = {
@@ -29,7 +29,7 @@ test('move city test', () => {
     }
   }
 
-  const movedUser = moveUser(user, 'Kiev');
+  const movedUser = moveCity(user, 'Kiev');
 
   expect(user).not.toBe(movedUser);
   expect(user.address).not.toBe(movedUser.address);
