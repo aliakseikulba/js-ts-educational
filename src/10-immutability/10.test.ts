@@ -1,4 +1,13 @@
-import {makeHaircut, moveCity, readNewBook, upgradeLaptop, UserType, UserWithBooksType, UserWithLaptopType} from './10';
+import {
+  makeHaircut,
+  moveCity,
+  readNewBook,
+  updateBook,
+  upgradeLaptop,
+  UserType,
+  UserWithBooksType,
+  UserWithLaptopType
+} from './10';
 
 test('reference type test', () => {
   let user: UserType = {
@@ -82,5 +91,28 @@ test('add new book to user', () => {
   expect(user.books).not.toBe(smartUser.books);
   expect(smartUser.books[3]).toBe('TS');
   expect(smartUser.books[4]).toBe('REST API');
+
+});
+
+test('update js to ts', () => {
+  let user: UserWithLaptopType & UserWithBooksType = {
+    name: 'Bob',
+    hair: 100,
+    address: {
+      title: 'Minsk'
+    },
+    laptop: {
+      title: 'MacBook'
+    },
+    books: ['JS', 'React', 'Css']
+  };
+
+  const updatedUsersBooks = updateBook(user, 'JS', 'TS');
+
+  expect(user).not.toBe(updatedUsersBooks);
+  expect(user.books).not.toBe(updatedUsersBooks.books);
+  expect(user.address).toBe(updatedUsersBooks.address);
+  expect(user.books).not.toBe(updatedUsersBooks.books);
+  expect(updatedUsersBooks.books[0]).toBe('TS');
 
 });

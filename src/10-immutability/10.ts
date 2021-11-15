@@ -57,3 +57,10 @@ export function readNewBook(user: UserWithLaptopType & UserWithBooksType, newBoo
 
   return copy;
 }
+
+export const updateBook = (user: UserWithLaptopType & UserWithBooksType, oldBook: string, newBook: string) => {
+  return {
+    ...user,
+    books: user.books.map(b => b === oldBook ? newBook : b)
+  }
+}
