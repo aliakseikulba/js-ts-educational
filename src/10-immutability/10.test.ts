@@ -2,7 +2,7 @@ import {
   makeHaircut,
   moveCity,
   readNewBook, removeBook,
-  updateBook, updateCompany,
+  updateBook, updateCompany, updateCompanyTitle2,
   upgradeLaptop,
   UserType,
   UserWithBooksType,
@@ -161,5 +161,32 @@ test('update company title', () => {
   expect(user.address).toBe(updatedCompanies.address);
   expect(user.companies).not.toBe(updatedCompanies.companies);
   expect(updatedCompanies.companies[0].title).toBe('EPAM');
+
+});
+
+
+test('update company 2', () => {
+  let user: UserWithLaptopType = {
+    name: 'Bob',
+    hair: 100,
+    address: {
+      title: 'Minsk'
+    },
+    laptop: {
+      title: 'MacBook'
+    }
+  };
+
+  let companies = {
+    'Bob': [{id: 1, title: 'Ebam'}, {id: 2, title: 'Gugle'}, {id: 3, title: 'Urber'}],
+    'Jack': [{id: 2, title: 'Uandex'}]
+  }
+
+
+  const copy = updateCompanyTitle2(companies, 'Bob', 1, 'EPAM');
+
+  expect(copy['Bob']).not.toBe(companies['Bob']);
+  expect(copy['Jack']).toBe(companies['Jack']);
+  expect(copy['Bob'][0].title).toBe('EPAM')
 
 });
