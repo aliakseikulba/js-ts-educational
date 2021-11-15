@@ -64,3 +64,8 @@ export const updateBook = (user: UserWithLaptopType & UserWithBooksType, oldBook
     books: user.books.map(b => b === oldBook ? newBook : b)
   }
 }
+
+export const removeBook = (user: UserWithLaptopType & UserWithBooksType, bookToDelete: string) => ({
+  ...user,
+  books: user.books.filter(b => b !== bookToDelete)
+})
