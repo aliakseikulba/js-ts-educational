@@ -32,3 +32,15 @@ export function moveCity(obj: UserWithLaptopType, city: string) {
   }
   return copy;
 }
+
+export function upgradeLaptop(user:UserWithLaptopType, laptopName: string ) {
+  const copy  = {
+    ...user,
+    laptop: {
+      ...user.laptop,
+      title: 'MacBook Pro'
+    }
+  }
+
+  return copy;
+}

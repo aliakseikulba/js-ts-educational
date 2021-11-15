@@ -1,4 +1,4 @@
-import {makeHaircut, moveCity, UserType, UserWithLaptopType} from './10';
+import {makeHaircut, moveCity, upgradeLaptop, UserType, UserWithLaptopType} from './10';
 
 test('reference type test', () => {
  let user: UserType = {
@@ -35,5 +35,28 @@ test('move city test', () => {
   expect(user.address).not.toBe(movedUser.address);
   expect(user.laptop).toBe(movedUser.laptop);
   expect(movedUser.address.title).toBe('Kiev')
+
+});
+
+
+test('move upgrade laptop', () => {
+  let user: UserWithLaptopType = {
+    name: 'Bob',
+    hair: 100,
+    address: {
+      title: 'Minsk'
+    },
+    laptop: {
+      title: 'MacBook'
+    }
+  }
+
+  const userWithNewLaptop = upgradeLaptop(user, 'MacBook Pro');
+
+  expect(user).not.toBe(userWithNewLaptop);
+  expect(user.laptop).not.toBe(userWithNewLaptop.laptop);
+  expect(user.address).toBe(userWithNewLaptop.address);
+  expect(userWithNewLaptop.laptop.title).toBe('MacBook Pro');
+  expect(user.laptop.title).toBe('MacBook');
 
 });
