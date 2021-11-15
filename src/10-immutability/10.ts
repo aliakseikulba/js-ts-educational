@@ -14,6 +14,10 @@ export type UserWithLaptopType = UserType & {
   laptop: LaptopType
 }
 
+export type UserWithBooksType = UserType & {
+  books: Array<string>
+}
+
 export function makeHaircut(u: UserType, volume: number) {
   const copy = {
     ...u,
@@ -43,4 +47,8 @@ export function upgradeLaptop(user:UserWithLaptopType, laptopName: string ) {
   }
 
   return copy;
+}
+
+export function readNewBook(user: UserWithBooksType, book: Array<string>) {
+
 }
